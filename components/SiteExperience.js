@@ -1,0 +1,17 @@
+'use client';
+import {useEffect,useRef,useState} from 'react';
+
+export default function SiteExperience(){
+ const [loading,setLoading]=useState(true),[leaving,setLeaving]=useState(false),[progress,setProgress]=useState(8),dot=useRef(null),ring=useRef(null),scrollBar=useRef(null);
+ useEffect(()=>{let mounted=true,value=8,interval;const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches,seen=sessionStorage.getItem('kult-intro');document.documentElement.classList.add('intro-active');
+  const finish=()=>{if(!mounted)return;clearInterval(interval);setProgress(100);setTimeout(()=>{setLeaving(true);setTimeout(()=>{if(mounted){setLoading(false);document.documentElement.classList.remove('intro-active');sessionStorage.setItem('kult-intro','1')}},reduced?80:520)},reduced?50:180)};
+  if(seen){finish()}else{interval=setInterval(()=>{value=Math.min(88,value+Math.ceil(Math.random()*8));if(mounted)setProgress(value)},90);Promise.all([document.fonts?.ready||Promise.resolve(),new Promise(r=>setTimeout(r,reduced?80:900))]).then(finish)}
+  return()=>{mounted=false;clearInterval(interval);document.documentElement.classList.remove('intro-active')}
+ },[]);
+ useEffect(()=>{const fine=matchMedia('(hover:hover) and (pointer:fine)'),reduced=matchMedia('(prefers-reduced-motion: reduce)');if(!fine.matches||reduced.matches)return;let tx=innerWidth/2,ty=innerHeight/2,rx=tx,ry=ty,raf,scrollTick=false;
+  document.documentElement.classList.add('has-kult-cursor');const move=e=>{tx=e.clientX;ty=e.clientY;if(dot.current)dot.current.style.transform=`translate3d(${tx}px,${ty}px,0)`;const interactive=e.target.closest('a,button,input,textarea,select,[data-cursor]');ring.current?.classList.toggle('is-hovering',!!interactive)};const down=()=>ring.current?.classList.add('is-down'),up=()=>ring.current?.classList.remove('is-down');
+  const draw=()=>{rx+=(tx-rx)*.16;ry+=(ty-ry)*.16;if(ring.current)ring.current.style.transform=`translate3d(${rx}px,${ry}px,0)`;raf=requestAnimationFrame(draw)};const scroll=()=>{if(scrollTick)return;scrollTick=true;requestAnimationFrame(()=>{const max=document.documentElement.scrollHeight-innerHeight,ratio=max>0?scrollY/max:0;if(scrollBar.current)scrollBar.current.style.transform=`scaleX(${ratio})`;scrollTick=false})};
+  addEventListener('pointermove',move,{passive:true});addEventListener('pointerdown',down);addEventListener('pointerup',up);addEventListener('scroll',scroll,{passive:true});draw();scroll();return()=>{cancelAnimationFrame(raf);document.documentElement.classList.remove('has-kult-cursor');removeEventListener('pointermove',move);removeEventListener('pointerdown',down);removeEventListener('pointerup',up);removeEventListener('scroll',scroll)}
+ },[]);
+ return <>{loading&&<div className={`intro-loader ${leaving?'is-leaving':''}`} role="status" aria-label="Loading KULT"><div className="loader-mark"><i>K</i><span>MAKE IT KULT®</span></div><div className="loader-copy"><small>KULT OS / INITIALISING</small><p>Shaping the moment<span>...</span></p></div><div className="loader-track"><i style={{transform:`scaleX(${progress/100})`}}/><span>{String(progress).padStart(3,'0')}%</span></div></div>}<div className="scroll-progress" ref={scrollBar}/><div className="kult-cursor-dot" ref={dot}/><div className="kult-cursor-ring" ref={ring}><span>K</span></div></>;
+}

@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import Hero3D from '@/components/Hero3D';
+import Hero3D from '@/components/LazyHero3D';
 import ScrollStory3D from '@/components/ScrollStory3D';
 const services=[['01','Event Management','From first sketch to final guest — thoughtful planning and seamless production.','/images/private-dinner.png'],['02','Public Relations','Stories, media moments and relationships that keep brands in the conversation.','/images/brand-launch.png'],['03','Creative Direction','An ownable visual world that makes every touchpoint feel unmistakably yours.','/images/mehndi-concept.png'],['04','Brand Experiences','Launches and activations designed to turn attention into real connection.','/images/awards-concept.png']];
 export default function Home(){return <>

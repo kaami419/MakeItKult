@@ -4,6 +4,7 @@ import './polish.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Chatbot from '@/components/Chatbot';
+import SiteExperience from '@/components/SiteExperience';
 
 export const metadata = {
   metadataBase: new URL('https://makeitkult.com'),
@@ -14,5 +15,5 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  return <html lang="en"><body><div className="grain"/><div className="ambient"/><Header/><main>{children}</main><Footer/><Chatbot/></body></html>;
+  return <html lang="en"><body><SiteExperience/><div className="grain"/><div className="ambient"/><Header/><main>{children}</main><Footer/><Chatbot/></body></html>;
 }
