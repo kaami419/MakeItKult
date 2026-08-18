@@ -5,6 +5,7 @@ import * as THREE from 'three';
 export default function Hero3D() {
   const mount = useRef(null);
   useEffect(() => {
+    
     const el = mount.current;
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(42, el.clientWidth / el.clientHeight, .1, 100);
