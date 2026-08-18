@@ -31,3 +31,13 @@ main{overflow:clip}
 .page-hero{min-height:100svh;padding-top:clamp(135px,20vh,185px);padding-bottom:clamp(60px,10vh,105px)}.page-hero h1{font-size:clamp(58px,min(8.2vw,14vh),122px);margin-top:clamp(45px,8vh,75px)}
 @media(max-width:800px){.home-hero{min-height:100svh}.hero-content{top:48%}.hero-content h1{font-size:clamp(64px,22vw,112px);line-height:.76;margin:28px 0 34px}.page-hero{min-height:100svh;padding:118px 6vw 48px}.page-hero h1{font-size:clamp(50px,15vw,78px);line-height:.9;margin:42px 0 24px}.page-hero>p{font-size:13px;line-height:1.55}.page-orb{inset:18% -72% 3% 8%;opacity:.3}.hero-coordinates{bottom:14px}.hero-bottom p{font-size:12px;line-height:1.55}.side-note{display:none}}
 @media(max-width:420px) and (max-height:760px){.site-header{height:62px}.home-hero{min-height:100svh}.hero-content{top:46%}.hero-content h1{font-size:20vw;margin:22px 0}.hero-bottom p{margin-bottom:16px}.page-hero{padding-top:96px}.page-hero h1{font-size:13.5vw;margin-top:30px}.page-orb{opacity:.22}}
+
+/* Readable secondary type — intentionally tinted, never washed out. */
+.site-header nav a{color:#294f46}.site-header nav small,.kicker,.hero-coordinates,.story-label,.story-model-tag{color:#3e6259}
+.page-hero>p,.page-hero.dark>p,.service-detail p,.work-meta p,.experience-copy p,.journal-grid p,.split-copy p,.scroll-story article p{color:#294f46}
+.service-list p,.services-preview .kicker,.experience-copy small{color:#365e54}
+.concept-note,.portfolio-note{color:#31574e;opacity:.85}
+.editorial>div>p,.values p,.process article p,.contact-info .contact-note{color:#d4e1dd}
+.contact-info small,.contact-layout label{color:#b8ccc6}.contact-info p{color:#e1e9e6}
+.footer-bottom{color:#b6c8c2}.footer-bottom a{color:#dce7e3}
+.capability-card p{color:#f0f5f2}.project small,.project>div>span,.world small{color:#eef5f2}
