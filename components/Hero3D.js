@@ -8,7 +8,7 @@ export default function Hero3D() {
     const el = mount.current;
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(42, el.clientWidth / el.clientHeight, .1, 100);
-    camera.position.set(0, 0, 6.2);
+    camera.position.set(0, 0, 8.2);
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, powerPreference: 'high-performance' });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.8));
     renderer.setSize(el.clientWidth, el.clientHeight);
@@ -17,7 +17,7 @@ export default function Hero3D() {
     renderer.toneMappingExposure = 1.3;
     el.appendChild(renderer.domElement);
 
-    const group = new THREE.Group(); scene.add(group);
+    const group = new THREE.Group(); group.position.x = .7; scene.add(group);
     const geometry = new THREE.TorusKnotGeometry(1.65, .5, 180, 24, 2, 3);
     const material = new THREE.MeshPhysicalMaterial({ color: 0x287f74, emissive: 0x06251f, emissiveIntensity: .03, metalness: .68, roughness: .14, transmission: .04, thickness: 1.1, clearcoat: 1, clearcoatRoughness: .06, iridescence: .55, iridescenceIOR: 1.45 });
     const knot = new THREE.Mesh(geometry, material); knot.rotation.set(.15, -.45, .18); group.add(knot);
